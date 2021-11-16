@@ -88,11 +88,28 @@
     
     1.2 基本操作
     
-    1.2.1 查看仓库状态    
+    1.2.1 状态查看操作   
     >>git status
     On branch master
     No commits yet
     nothing to commit (create/copy files and use "git add" to track)
+    
+    1.2.2 添加操作
+    git add [file name]   # 将工作区的“新建/修改”添加到暂存区    
+    
+    1.2.3 提交操作
+    git commit -m "commit message" [file name]    # 将暂存区的内容提交到本地库    
+    
+    1.2.4 查看历史记录操作
+    1.2.4.1 git log
+    
+    1.2.4.2 
+    
+    
+    1.2.5 删除文件并找回
+    
+    1.2.6 比较文件差异
+   
 
     
     1.3 分支管理
