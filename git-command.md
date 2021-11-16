@@ -102,6 +102,28 @@
     
     1.2.4 查看历史记录操作
     1.2.4.1 git log
+            >>git log            
+            commit 48117dc87dcffd9332bf57ebe1c5c3c62eaf3a68 (HEAD -> master)
+            Author: crystalapril <aprilzhangpku@qq.com>
+            Date:   Tue Nov 16 17:50:06 2021 +0800
+
+                commit backup.py rectified in 20211004,amount increased of linear trend,eg. [2 4 6 8]
+
+            commit f17479c1926d83fa1019fa3f0eda0a86afa73c3f
+            Author: crystalapril <aprilzhangpku@qq.com>
+            Date:   Tue Nov 16 17:44:02 2021 +0800
+
+                commit backup_address created in 20210926
+    
+            >>git log --pretty=oneline            
+            48117dc87dcffd9332bf57ebe1c5c3c62eaf3a68 (HEAD -> master) commit backup.py rectified in 20211004
+                    ,amount increased of linear trend,eg. [2 4 6 8]
+            f17479c1926d83fa1019fa3f0eda0a86afa73c3f commit backup_address created in 20210926
+    
+            >>git log --oneline   # 是缩短的简写，包括hash码也是前7位
+            48117dc (HEAD -> master) commit backup.py rectified in 20211004,amount increased of linear trend,eg. [2 4 6 8]
+            f17479c commit backup_address created in 20210926
+
     
     1.2.4.2 
     
