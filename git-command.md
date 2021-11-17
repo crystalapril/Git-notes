@@ -102,7 +102,7 @@
     
     1.2.4 查看历史记录操作
     1.2.4.1 git log
-            >>git log            
+            >>git log        # 多屏显示控制方式：空格向下翻页，b 向上翻页 ， q 退出    
             commit 48117dc87dcffd9332bf57ebe1c5c3c62eaf3a68 (HEAD -> master)
             Author: crystalapril <aprilzhangpku@qq.com>
             Date:   Tue Nov 16 17:50:06 2021 +0800
@@ -123,12 +123,48 @@
             >>git log --oneline   # 是缩短的简写，包括hash码也是前7位
             48117dc (HEAD -> master) commit backup.py rectified in 20211004,amount increased of linear trend,eg. [2 4 6 8]
             f17479c commit backup_address created in 20210926
-
     
-    1.2.4.2 
+    1.2.4.2 git reflog
+            >>git reflog            
+            1644b18 (HEAD -> master) HEAD@{0}: commit: commit the 2nd version of backup.py which amount=[2,4,6,8]
+            67416b8 HEAD@{1}: commit: commit the 1st version of backup.py,which amount is fixed,eg.amount=5
+            48117dc HEAD@{2}: commit: commit backup.py rectified in 20211004,amount increased of linear trend,eg. [2 4 6 8]
+            # HEAD@{移动到当前版本需要多少步}   
+    
+    1.2.4.3 head 前进后退
+            - 本质
+              指针在前后索引上的移动  
+              
+            - 基于索引值操作[推荐] 
+            git reset --hard [局部索引值]           
+            eg.
+            >>git reset --hard 67416b8
+            HEAD is now at 67416b8 commit the 1st version of backup.py,which amount is fixed,eg.amount=5
+            >>git reflog
+            67416b8 (HEAD -> master) HEAD@{0}: reset: moving to 67416b8
+            1644b18 HEAD@{1}: commit: commit the 2nd version of backup.py which amount=[2,4,6,8],increased by linear
+            67416b8 (HEAD -> master) HEAD@{2}: commit: commit the 1st version of backup.py,which amount is fixed,eg.amount=5
+            >>cat backup.py   # 就可以看到67416b8 这个节点保存的 backup.py 的内容   
+            
+            - 使用^符号
+            git reset --hard HEAD^  # 过河卒子，只能后退，往回找，不能前进
+            eg.
+            >>git reset --hard HEAD^            
+            HEAD is now at 48117dc commit backup.py rectified in 20211004,amount increased of linear trend,eg. [2 4 6 8]  
+            >>git reset --hard HEAD^^^  # 一个^表示后退一步，n个^表示后退n步
+            
+            - 使用~符号
+            git reset --hard HEAD~n  # 只能后退，n表示后退n步
+            >>git reset --hard HEAD~1            
+            HEAD is now at f17479c commit backup_address created in 20210926            
+    
+    1.2.4.4 reset命令的三个参数
     
     
     1.2.5 删除文件并找回
+    >>git rm --cached backup.py    
+    rm 'backup.py'
+
     
     1.2.6 比较文件差异
    
