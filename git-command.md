@@ -156,9 +156,34 @@
             - 使用~符号
             git reset --hard HEAD~n  # 只能后退，n表示后退n步
             >>git reset --hard HEAD~1            
-            HEAD is now at f17479c commit backup_address created in 20210926            
+            HEAD is now at f17479c commit backup_address created in 20210926     
     
     1.2.4.4 reset命令的三个参数
+            - soft
+              仅仅在本地库移动HEAD指针     
+                >>git reset --soft 48117dc
+                >>git reflog
+                48117dc (HEAD -> master) HEAD@{0}: reset: moving to 48117dc
+                1644b18 HEAD@{1}: reset: moving to 1644b18
+                f17479c HEAD@{2}: reset: moving to f17479c
+                f17479c HEAD@{3}: reset: moving to HEAD~1
+                48117dc (HEAD -> master) HEAD@{4}: reset: moving to 48117dc
+                >>git status
+                
+            - mixed
+              在本地库移动HEAD指针
+              重置暂存区
+              >>git reset --mixed f17479c
+              >>git reflog
+              >>git log --oneline
+              >>git status              
+              
+            - hard
+              在本地库移动HEAD指针
+              重置暂存区
+              重置工作区
+              
+    1.2.4.5 
     
     
     1.2.5 删除文件并找回
