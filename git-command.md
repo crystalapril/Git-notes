@@ -168,7 +168,10 @@
                 f17479c HEAD@{2}: reset: moving to f17479c
                 f17479c HEAD@{3}: reset: moving to HEAD~1
                 48117dc (HEAD -> master) HEAD@{4}: reset: moving to 48117dc
-                >>git status
+                >>git status                
+                
+                       暂存区    工作区              
+              本地库
                 
             - mixed
               在本地库移动HEAD指针
@@ -176,20 +179,49 @@
               >>git reset --mixed f17479c
               >>git reflog
               >>git log --oneline
-              >>git status              
+              >>git status    
+              
+                                 工作区
+              本地库    暂存区
               
             - hard
               在本地库移动HEAD指针
               重置暂存区
               重置工作区
-              
-    1.2.4.5 
     
-    
-    1.2.5 删除文件并找回
+    1.2.5 删除文件并找回    
+    1.2.5.1 删除文件    
     >>git rm --cached backup.py    
     rm 'backup.py'
-
+    >>git status    
+    On branch master
+    changes not staged for commit:
+      (use "git add/rm <file>..." to update what will be committed)
+      (use "git checkout --<file>..." to discard changes in working directory)
+            deleted: backup.py   
+    # 提交至缓存区
+    >>git add backup.py   # 把删除 backup.py 的操作add给缓存区
+    >>git commit -m "delete backup.py" backup.py  # 提交至本地库    
+     1 file changed, 120 deletions(-)
+     delete mode 100644 backup_address.py
+    >>git status 
+    On branch master
+    nothing to commit, working tree clean
+    >>git reflog
+    5e2ffe0 (HEAD->master) HEAD@{0}: commit: delete backup.py  
+    
+    1.2.5.2 找回文件
+    前提：删除前，文件存在时的状态提交到了本地库
+    操作：git reset --hard [指针位置]
+         - 删除操作已经提交到本地库：指针位置指向历史记录
+         - 删除操作尚未提交到本地库：指针位置使用HEAD
+    eg1.     
+    >>git reset --hard 567f4e1
+    HEAD is now at 567f4e1 backup.py  
+    >>cat backup.py  
+    eg2.
+    >>git reset --hard HEAD
+    HEAD is now at 567f4e1 backup.py  
     
     1.2.6 比较文件差异
    
