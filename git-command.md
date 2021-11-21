@@ -224,7 +224,38 @@
     HEAD is now at 567f4e1 backup.py  
     
     1.2.6 比较文件差异
-   
+    git diff [文件名]
+    - 将工作区中的文件和暂存区进行比较
+    git diff [本地库中历史版本] [文件名]
+    - 将工作区中的文件和本地库历史记录比较
+    git diff
+    - 不带文件名比较多隔文件
+    
+    eg1.
+    >>git diff backup.py
+    diff --git a/backup.py b/backup.py
+    index 063c5ed..e5d5097 100644
+    --- a/backup.py
+    +++ b/backup.py
+    @@ -27,19 +27,32 @@ c = Conflux(provider)  # 可能会出现 warning，不用管
+
+    -amount_in = int(5*10**18)
+    +amounts = [int(5*10**18),int(10*10**18),int(15*10**18)]^M
+
+    -def opportunity(path,amount_in):
+    -    b = backup_fun.cal_amount_out(path,amount_in)
+    -    if b < amount_in:
+    +def opportunity(path,amounts):^M
+    +    differences = []^M
+    +    for amount_in in amounts:^M
+    
+    eg2.
+    >>git diff HEAD backup.py
+    >>git diff HEAD^ backup.py
+    
+    eg3.
+    >>git diff
+    >>git diff HEAD 
 
     
     1.3 分支管理
