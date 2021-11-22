@@ -269,5 +269,71 @@
     feature2 ----------------feature2.1 -------------------------feature2.2    
     
     1.3.2 分支操作
+    - 创建分支
+      git branch [分支名]
+      
+    - 查看分支
+      git branch -v
+      
+    - 切换分支
+      git checkout [分支名]
+      
+    - 合并分支
+      第一步：切换到接受修改的分支（被合并，增加新内容）
+      git checkout [被合并分支名]      
+      第二步：执行merge 命令
+      git merge    [有新内容分支名]
+      
+    - 解决冲突
+      - 冲突的表现：
+      ...
+      <<<<<<< HEAD
+      code        edit by branch    # 当前分支内容
+      ============
+      code        edit by master    # 另一分支内容
+      >>>>>>> master
+      ...
+      - 冲突的解决：
+      第一步：编辑文件，删除特殊符号
+      第二步：把文件修改到满意的程度，保存退出
+      第三步：git add [文件名]
+      第四步：git commit -m "日志信息"   # 注意：此时 commit 一定不能带具体文件名        
+    
+    eg.
+    >>git branch -v   # 查看分支
+    * master 1644b18 commit the 2nd version of backup.py which amount=[2,4,6,8],increased by linear    
+    >>git branch test_branch
+    >>git branch -v   # *表示目前位于哪个分支
+    * master      1644b18 commit the 2nd version of backup.py, increased by linear
+      test_branch 1644b18 commit the 2nd version of backup.py, increased by linear    
+    >>git checkout test_branch
+    Switched to branch 'test_branch'
+    >>git branch -v
+      master      1644b18 commit the 2nd version of backup.py,increased by linear
+    * test_branch 1644b18 commit the 2nd version of backup.py,increased by linear
+    
+    >>vi backup.py
+    >>git add backup.py
+    >>git commit -m "test function of branch" backup.py
+    >>test function of branch    
+    [test_branch 850a4c5] test function of branch
+     1 file changed, 1 insertion(+)
+    >>git branch -v
+      master      1644b18 commit the 2nd version of backup.py which amount=[2,4,6,8],increased by linear
+    * test_branch 850a4c5 test function of branch
+    >>git checkout master
+    Switched to branch 'master'
+    >>git merge test_branch
+    Updating 1644b18..850a4c5
+    Fast-forward
+     backup.py | 1 +
+     1 file changed, 1 insertion(+)
+
+    
+
+
+
+    
+
     
     2 远程库操作
