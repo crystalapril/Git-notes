@@ -352,11 +352,54 @@
 
     1.4 git基本原理
     1.4.1 哈希
+    哈希是一系列的加密算法，具有以下几个共同特点：
+    - 不管输入数据量有多大，输入同一个哈希算法，得到的加密结果长度固定
+    - 哈希算法确定，输入数据确定，输出数据能保证不变
+    - 哈希算法不可逆
+    
+    git底层采用的是sha1 算法
+    原始文件 ----> sha1 ----> 哈希值  （明文 ---> 算法 ---> 密文）    
     
     1.4.2 git保存版本的机制   
-
-
+    - 集中式版本控制工具的文件管理机制 
+      以文件变更列表的方式储存信息。
+      这类系统将保存的信息看作是一组基本文件和每个文件随时间逐步累积的差异
+      v1          v2           v3           v4          v5
+      file A ---> A1 ---------------------> A2
+      file B -----------------------------> B1 -------> B2
+      file C ---> C1 --------> C2 --------------------> C3
+      
+    - git 文件管理机制
+      git把数据看作是小型文件系统的一组快照
+      每次提交更新时，git都会对当前的全部文件制作一个快照并保存这个快照的索引。
+      如果文件没有修改，git不再重新储存该文件，而是只保留一个链接指向之前储存的文件。
+      v1          v2          v3          v4          v5
+      file A      A1          A1          A2          A2
+      file B      B           B           B1          B2
+      file C      C1          C2          C2          C3
+      
+    - git 文件的提交对象    
+    98ca9           ---->  92ec2     (后面三个分支)
+    commit   size          tree     size
+    tree     92ec2         blob      5b1d3  README     ---->  5b1d3 (blob size  testing library)
+    author   april         blob      911e7  LICENSE    ---->  911e7 (blob size  the MIT license)
+    commiter april         blob      cba8a  test.rb    ---->  cba8a (blob size  test case)
+    
+    - git 提交对象及其父对象形成的链条
+    98ca9           <----  34ac2           <----  f30ab 
+    commit   size          commit   size          commit   size       
+    tree     92ec2         tree     184ca         tree     0de24   
+    parent                 parent   98ca9         parent   34ac2
+    author   april         author   april         author   april      
+    commiter april         commiter april         commiter april  
+    "the intial commit"    "fixed bug"            "add feature"
+       |                       |                      |
+    snapshot A             snapshot B             snapshot C
+    
+    1.4.3 git 分支管理机制
     
 
     
     2 远程库操作
+    
+    
