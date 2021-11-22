@@ -312,7 +312,7 @@
       master      1644b18 commit the 2nd version of backup.py,increased by linear
     * test_branch 1644b18 commit the 2nd version of backup.py,increased by linear
     
-    >>vi backup.py
+    >>vi backup.py    # 修改文件
     >>git add backup.py
     >>git commit -m "test function of branch" backup.py
     >>test function of branch    
@@ -323,14 +323,37 @@
     * test_branch 850a4c5 test function of branch
     >>git checkout master
     Switched to branch 'master'
-    >>git merge test_branch
-    Updating 1644b18..850a4c5
-    Fast-forward
-     backup.py | 1 +
-     1 file changed, 1 insertion(+)
-
+    >>git merge test_branch    # 合并分支，发现出现冲突
+    Auto-merging backup.py
+    CONFLICT (content):Merge conflict in backup.py
+    Automatic merge failed; fix conflic and then commit the result.
     
+    >>vi backup.py    # 解决冲突
+    >>git status    
+    On branch test_branch
+    You have unmerged paths.
+        (fix conflicts and run "git commit")
+        (use "git merger --abort" to abort the merge)
+     Unmerged paths:
+        (use "git add <file>..." to mark resolution)
+            both modified: backup.py
+     no changes added to commit (use "git add" and/or "git commit -a")
+     >>git add backup.py
+     >>git status
+     On branch test_branch
+     All conflicts fixed but you are still merging.
+        (use "git commit" to conclude merge)
+     Changes to be commited:
+        modified: backup.py
+     >>git commit -m "resolve conflict"   # 注意：此处不要接文件名
+     >>git status
+     On branch test_branch
+     nothing to commit, working tree clean           
 
+    1.4 git基本原理
+    1.4.1 哈希
+    
+    1.4.2 git保存版本的机制   
 
 
     
