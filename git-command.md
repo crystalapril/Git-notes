@@ -491,9 +491,16 @@
     2.7.1 操作步骤
     - 第一步：先对对方的远程库进行fork，到自己的远程库
     - 第二步：git clone 到本地
-    - 第三步：
+    - 第三步：vi file ，修改文件
+    - 第四步：git commit ，提交到本地库
+    - 第五步：git push 到远程库
+    - 第六步：点击 pull request ，向创始团队提交拉取的申请
+      pull request --- new pull request ---create pull request
+    - 第七步：创始团队点击 pull request，并审核代码，还可以comment进行对话
+    - 第八步：创始团队审核无误后，点击 merge pull request 合并代码，在 confirm merge 的框里填写本次操作的信息
+    - 第九步：创始团队再将远程库修改拉取到本地，git pull first_repo/master
     
-    
+    2.8 通过ssh来登录
     
     
     
