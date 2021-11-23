@@ -397,9 +397,41 @@
     snapshot A             snapshot B             snapshot C
     
     1.4.3 git 分支管理机制
+    git的分支管理，主要是指针的移动
     
-
+    （1）创建分支
+                                   HEAD 
+                                    |
+                                  master
+                                    |
+    98ca9   <----  34ac2   <----  f30ab 
+                                    |
+                                 testing   
+   
+    （2）把head 指向分支
+                                  master
+                                    |
+    98ca9   <----  34ac2   <----  f30ab 
+                                    |
+                                 testing
+                                    |
+                                   HEAD
+                                   
+    （3）在分支上做修改，并提交
+                                   HEAD 
+                                    |
+                                  master
+                                    |
+    98ca9   <----  34ac2   <----  f30ab  <---- 87ab2
+                                                 |
+                                              testing
+                                              
     
     2 远程库操作
+    2.1 在github上创建远程仓库
+    - 创建仓库，给仓库命名，选择public/private
+    - 复制仓库地址，有https/ssh
+    
+    2.2 
     
     
