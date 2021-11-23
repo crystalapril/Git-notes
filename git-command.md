@@ -432,6 +432,68 @@
     - 创建仓库，给仓库命名，选择public/private
     - 复制仓库地址，有https/ssh
     
-    2.2 
+    2.2 仓库远程地址    
+    - 查看当前所有远程地址及其别名
+      git remote -v    
+    - 添加远程地址
+      git remote 仓库地址名 仓库地址  
+    eg.
+    >>git remote first_repo https://github.com/crystalapril/Linux-notes.git
+    >>git remote -v
+    first_repo https://github.com/crystalapril/Linux-notes.git (fetch)
+    first_repo https://github.com/crystalapril/Linux-notes.git (push)
+    
+    2.3 推送到远程仓库
+    git push [仓库地址名] [分支名]
+    >>git push first_repo master
+    
+    2.4 克隆仓库到本地
+    git clone [远程仓库地址]
+    >>git clone https://github.com/crystalapril/Linux-notes.git
+    
+    克隆的三个效果：
+    - 完整的把远程库下载到本地
+    - 创建远程地址别名
+    - 初始化本地库
+    
+    2.5 添加合作开发者
+    setting ———— collaborators ———— add collaborators  ———— 等待对方 accept invitation
+    
+    合作开发者可以接受邀请，然后把仓库 clone 到本地，修改后再 push 到远程仓库
+    但是 push 之后不一定会被创始人接受，还需要创始人审核代码，pull下来
+    
+    2.6 拉取远程仓库的更新信息
+    2.6.1 git pull    # 当与其他分支没有没有冲突时，用 pull 最方便
+    pull = fetch + merge
+    
+    git pull [远程仓库地址名] [远程仓库分支]
+    >>git pull first_repo master 
+    
+    2.6.2 git fetch    # 如果可能出现冲突，最好先 fetch 下来，然后检查修改之后，再 merge
+    git fetch [远程仓库地址名] [远程仓库分支]
+    >>git fetch first_repo master   # 纯读取数据，不需要登录
+    >>git checkout first_repo/master
+    >>vi backup.py    
+    
+    2.6.3 git merge
+    git merge [远程仓库地址名/远程仓库分支]
+    >>git merge first_repo/master
+    >>vi backup.py
+    >>git commit -m "test pull" backup.py
+    >>git push first_repo master
+    
+    2.6.4 解决冲突
+    - 如果不是基于 github 远程库最新版所作的修改，不能推送，必须先拉取
+    - 拉取下来后，如果进入冲突状态，则按照“分支冲突解决”操作解决即可
+    
+    
+    2.7 与外部团队协同开发
+    2.7.1 操作步骤
+    - 第一步：先对对方的远程库进行fork，到自己的远程库
+    - 第二步：git clone 到本地
+    - 第三步：
+    
+    
+    
     
     
