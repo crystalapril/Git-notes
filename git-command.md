@@ -506,19 +506,47 @@
     
     2.8 通过ssh来登录    
     第一步：查看或生成密钥
-    >>ll -a ~/.ssh    
-    >>ssh-keygen -b 4096      # 如果不存在这个文件夹就再生成一个公钥
-    >>cat ~/.ssh/id_rsa.pub   # 查看公钥
+        >>ll -a ~/.ssh    
+        >>ssh-keygen -b 4096      # 如果不存在这个文件夹就再生成一个公钥
+        >>cat ~/.ssh/id_rsa.pub   # 查看公钥
     第二步：复制id_rsa.pub 的内容，去到github，点击头像 -- setting -- ssh and GPG keys -- new keys
     第三步: 粘贴 id_rsa.pub 进去
     第四步：回到linux 终端，git bash创建的远程地址别名
-    >>git remote add cfx_backup_ssh git@github.com:crystalapril/cfx_backup.git   # 将github的地址添加进本地仓库
-    >>git remote -v
-    cfx_backup_ssh  git@github.com:crystalapril/cfx_backup.git (fetch)
-    cfx_backup_ssh  git@github.com:crystalapril/cfx_backup.git (push)
+        >>git remote add cfx_backup_ssh git@github.com:crystalapril/cfx_backup.git   # 将github的地址添加进本地仓库
+        >>git remote -v
+        cfx_backup_ssh  git@github.com:crystalapril/cfx_backup.git (fetch)
+        cfx_backup_ssh  git@github.com:crystalapril/cfx_backup.git (push)
     第五步：推送文件到远程库
-    >>git push cfx_backup_ssh master
+        >>git push cfx_backup_ssh master
     
     
+### 分类
 
+    1 集中式工作流
+    像svn一样，集中式工作流以中央仓库为项目所有修改的单点实体，所有的修改都提交到master上
+    这种方式与svn的主要区别就是开发人员有本能地库，git很多特性没有用到
+    
+    2 gitflow 工作流
+    gitflow 工作流通过功能开发、发布准备和维护设立了独立的分支，让发布迭代过程更流程
+    严格的分支模型也为大型项目提供了一些必要的结构
+    
+    2.1 gitflow 工作流详解
+    - 主干分支 master
+      主要负责管理正在运行的生产环境代码。永远保持与正在运行的生产环境完全一致
+    - 开发分支 develop
+      主要负责管理正在开发过程中的代码。一般情况下应该是最新的代码
+    - bug修理分支
+      主要负责管理生产环境下出现的紧急修复的代码
+      从主分支分出，修理完毕并测试上线后，并回主干分支。并回后，视情况可以删除该分支
+    - 准生产分支（预发布分支） release
+      较大的版本上线前，会从开发分支中分出准生产分支，进行最后阶段的集成测试
+      该版本上线后，会合并到主干分支，生产环境运行一段阶段较稳定后，可以视情况删除
+    - 功能分支 feature 
+    
+    
+    3 forking 工作流
+    forking 工作流是在 gitflow 的基础上，充分利用了 git的 fork 和 pull request 的功能以达到代码审核的目的
+    更适合安全可靠地管理大团队的开发者，而且能接受不信任贡献者的提交
+    
+    
     
