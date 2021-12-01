@@ -503,7 +503,22 @@
     - 第八步：创始团队审核无误后，点击 merge pull request 合并代码，在 confirm merge 的框里填写本次操作的信息
     - 第九步：创始团队再将远程库修改拉取到本地，git pull first_repo/master
     
-    2.8 通过ssh来登录
+    
+    2.8 通过ssh来登录    
+    第一步：查看或生成密钥
+    >>ll -a ~/.ssh    
+    >>ssh-keygen -b 4096      # 如果不存在这个文件夹就再生成一个公钥
+    >>cat ~/.ssh/id_rsa.pub   # 查看公钥
+    第二步：复制id_rsa.pub 的内容，去到github，点击头像 -- setting -- ssh and GPG keys -- new keys
+    第三步: 粘贴 id_rsa.pub 进去
+    第四步：回到linux 终端，git bash创建的远程地址别名
+    >>git remote add cfx_backup_ssh git@github.com:crystalapril/cfx_backup.git   # 将github的地址添加进本地仓库
+    >>git remote -v
+    cfx_backup_ssh  git@github.com:crystalapril/cfx_backup.git (fetch)
+    cfx_backup_ssh  git@github.com:crystalapril/cfx_backup.git (push)
+    第五步：推送文件到远程库
+    >>git push cfx_backup_ssh master
     
     
+
     
