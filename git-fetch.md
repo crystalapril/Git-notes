@@ -41,7 +41,14 @@
     >>git log --oneline             # 发现本地master已经有了远程分支上的最新记录
     d3e6f7e (HEAD -> master, cfx_backup_ssh/master) modify backup_address in 20211106
 
-   
+    4 删除本地的远程分支 git branch    
+    # 这个只是删除本地的cfx_backup_ssh/master ，不会影响github上的远程分支
+    >>git branch --remotes --delete cfx_backup_ssh/master  # git branch -r -d cfx_backup_ssh/master 或许也可以
+    Deleted remote-tracking branch cfx_backup_ssh/master (was d3e6f7e).
+    >>git branch -a
+    * master
+    
+
     
     
 
