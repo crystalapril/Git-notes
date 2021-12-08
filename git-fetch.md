@@ -2,7 +2,7 @@
 
 ### git fetch or pull
 
-    1 从远程库 git fetch 可能会遇到一些问题：    
+    1 从远程库 git fetch/pull 可能会遇到一些问题：    
     >>git fetch cfx_backup_ssh master    
     From github.com:crystalapril/cfx_backup
      * branch            master     -> FETCH_HEAD
