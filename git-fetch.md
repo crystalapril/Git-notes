@@ -50,6 +50,14 @@
     >>git branch -a
     * master
     
+    '''
+    以下方法可能也行，待验证：
+        git branch -d remotes/origin/master
+        git remote prune origin
+        git fetch -p
+        git fetch origin master 
+    '''
+    
     5 删除远程分支
     典型的情况是，如果你有一个远程特性分支，你已经完成了，你从远程删除它
     >>git push origin --delete feature_branch # 或 git push origin :feature_branch
