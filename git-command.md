@@ -436,9 +436,9 @@
     - 查看当前所有远程地址及其别名
       git remote -v    
     - 添加远程地址
-      git remote 仓库地址名 仓库地址  
+      git remote add 仓库地址名 仓库地址  
     eg.
-    >>git remote first_repo https://github.com/crystalapril/Linux-notes.git
+    >>git remote add first_repo https://github.com/crystalapril/Linux-notes.git
     >>git remote -v
     first_repo https://github.com/crystalapril/Linux-notes.git (fetch)
     first_repo https://github.com/crystalapril/Linux-notes.git (push)
